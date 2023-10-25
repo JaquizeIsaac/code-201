@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Add some basic CSS for styling */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My About Me Page</h1>
+
+  <!-- Ask the user for their name using a prompt -->
+  <script>
+    const userName = prompt("Greetings, and welcome to my webpage. What name do you perfer to be called?");
+    alert(`Alright, ${userName}! Let's play a guessing game about me.`);
+
+    // Define your biography, education, job experience, and goals
+    const biography = "I am obsessed with cotton candy, as bad as you need to breathe.";
+    const education = "I went graduated from Lewis and Clark community college and also play basketball for the womens team.";
+    const jobExperience = "I have served in the Army as a 92F, active duty and guard.";
+    const goals = "My goal is to become a full-stack developer and build amazing web applications.";
+
+    // Define the questions and answers
+    const questions = [
+      "Do I enjoy coding? (yes/no)",
+      "Do I have a degree in Computer Science? (yes/no)",
+      "Have I worked as a software engineer for 3 years? (yes/no)",
+      "Is my goal to become a full-stack developer? (yes/no)",
+      "Is my favorite color blue? (yes/no)",
+    ];
+
+    const answers = ["yes", "no", "no", "yes", "no"];
+
+    // Start the game
+    for (let i = 0; i < questions.length; i++) {
+      let userAnswer = prompt(questions[i]).toLowerCase(); // Normalize user input to lowercase
+      if (userAnswer === answers[i]) {
+        alert("Correct!");
+        // console.log(`Question ${i + 1}: Correct!`);
+      } else {
+        alert("Incorrect!");
+        // console.log(`Question ${i + 1}: Incorrect!`);
+      }
+    }
+
+    // Display the user's name in the final message
+    alert(`Thanks for playing, ${userName}! Here's some information about me:\n\n${biography}\n\n${education}\n\n${jobExperience}\n\n${goals}`);
+  </script>
+</body>
+</html>
