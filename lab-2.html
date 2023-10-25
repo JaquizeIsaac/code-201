@@ -14,12 +14,12 @@
 
   <!-- Ask the user for their name using a prompt -->
   <script>
-    const userName = prompt("Greetings, and welcome to my webpage. What name do you perfer to be called?");
+    const userName = prompt("Greetings, and welcome to my webpage. What name do you prefer to be called?");
     alert(`Alright, ${userName}! Let's play a guessing game about me.`);
 
     // Define your biography, education, job experience, and goals
     const biography = "I am obsessed with cotton candy, as bad as you need to breathe.";
-    const education = "I went graduated from Lewis and Clark community college and also play basketball for the womens team.";
+    const education = "I went graduated from Lewis and Clark community college and also played basketball for the women's team.";
     const jobExperience = "I have served in the Army as a 92F, active duty and guard.";
     const goals = "My goal is to become a full-stack developer and build amazing web applications.";
 
@@ -30,24 +30,88 @@
       "Have I worked as a software engineer for 3 years? (yes/no)",
       "Is my goal to become a full-stack developer? (yes/no)",
       "Is my favorite color blue? (yes/no)",
+      "Guess a number between 1 and 10.",
+      "Name one of my favorite programming languages."
     ];
 
-    const answers = ["yes", "no", "no", "yes", "no"];
+    const answers = ["yes", "no", "no", "yes", "no", 7, ["JavaScript", "Python", "Java"]];
+
 
     // Start the game
+    let score = 0;
+
     for (let i = 0; i < questions.length; i++) {
-      let userAnswer = prompt(questions[i]).toLowerCase(); // Normalize user input to lowercase
-      if (userAnswer === answers[i]) {
-        alert("Correct!");
-        // console.log(`Question ${i + 1}: Correct!`);
+      if (i === 5) {
+        let attempts = 4;
+        let correctNumber = answers[i];
+        while (attempts > 0) {
+          const userGuess = parseInt(prompt(questions[i]));
+          if (userGuess === correctNumber) {
+            alert("Correct!");
+            score++;
+            break;
+          } else if (userGuess < correctNumber) {
+            alert("Too low! Try again.");
+          } else {
+            alert("Too high! Try again.");
+          }
+          attempts--;
+        }
+        if (attempts === 0) {
+          alert(`Out of attempts. The correct answer was ${correctNumber}.`);
+        }
+      } else if (i === 6) {
+        let attempts = 6;
+        const possibleAnswers = answers[i];
+        while (attempts > 0) {
+          const userAnswer = prompt(questions[i]);
+          if (possibleAnswers.includes(userAnswer)) {
+            alert("Correct!");
+            score++;
+            break;
+          } else {
+            alert(`Incorrect. You have ${attempts - 1} attempts remaining.`);
+          }
+          attempts--;
+        }
+        if (attempts === 0) {
+          alert(`Out of attempts. Possible answers: ${possibleAnswers.join(", ")}`);
+        }
       } else {
-        alert("Incorrect!");
-        // console.log(`Question ${i + 1}: Incorrect!`);
+        let userAnswer = prompt(questions[i]).toLowerCase(); // Normalize user input to lowercase
+        if (userAnswer === answers[i]) {
+          alert("Correct!");
+          score++;
+        } else {
+          alert("Incorrect!");
+        }
       }
     }
 
-    // Display the user's name in the final message
-    alert(`Thanks for playing, ${userName}! Here's some information about me:\n\n${biography}\n\n${education}\n\n${jobExperience}\n\n${goals}`);
+    // Display the user's name and the final score in the message
+    alert(`Thanks for playing, ${userName}! You got ${score} out of 7 questions correct.\n\nHere's some information about me:\n\n${biography}\n\n${education}\n\n${jobExperience}\n\n${goals}`);
   </script>
+
+  <p>I am obsessed with cotton candy, as bad as you need to breathe.
+    I went graduated from Lewis and Clark community college and also played basketball for the women's team.
+    I have served in the Army as a 92F, active duty and guard
+    I have served in the Army as a 92F, active duty and guard.
+    My goal is to become a full-stack developer and build amazing web applications.
+  </p>
+  <h2>Top Ten Cars</h2>
+  <ol>
+      <li>BMW i4</li>
+      <li>Chevrolet Corvette</li>
+      <li>Honda Civic</li>
+      <li>Toyota GR Supra</li>
+      <li>Jeep Trackhawk</li>
+      <li>Dodge Challenger SRT</li>
+      <li>BMW i7</li>
+      <li>BMW X7</li>
+      <li>Lexus RX Hybrid</li>
+      <li>Mercedes-AMG SL43</li>
+  </ol>
+  
+  
 </body>
 </html>
